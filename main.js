@@ -86,7 +86,9 @@ function renderCards() {
   const width = innerWidth;
   const height = innerHeight;
   const focal = Math.min(width, height) * 0.82;
-
+  
+  const isMobile = innerWidth < 800;
+  
   cards.forEach((card) => {
     const p = projectPoint(card.theta, card.phi);
     const visible = p.z > 120;
@@ -98,7 +100,12 @@ function renderCards() {
     const bend = Math.max(-27, Math.min(27, (x - width / 2) / width * -42));
 
     card.element.style.opacity = opacity.toFixed(3);
-    card.element.style.filter = `blur(${visible ? Math.max(0, (1 - edgeFade) * 1.7) : 3}px)`;
+    if (!isMobile) {
+      card.element.style.filter = `blur(${visible ? Math.max(0, (1 - edgeFade) * 1.7) : 3}px)`;
+    } else {
+      card.element.style.filter = "none";
+    }
+
     card.element.style.pointerEvents = opacity > 0.18 ? "auto" : "none";
     card.element.style.zIndex = `${Math.round(scale * 1000)}`;
     card.element.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%) rotateY(${bend}deg) scale(${scale})`;
