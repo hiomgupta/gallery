@@ -150,6 +150,45 @@ a {
   transform: scale(1.01);
 }
 
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.78);
+  color: var(--ink);
+  font-family: "Courier New", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: clamp(16px, 2.5vw, 24px);
+  pointer-events: auto;
+  opacity: 1;
+}
+
+.intro-overlay span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 2.2vw, 20px) clamp(24px, 3vw, 30px);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(247, 244, 234, 0.16);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  animation: intro-pulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes intro-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.92;
+  }
+  to {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
 .detail {
   position: fixed;
   z-index: 40;

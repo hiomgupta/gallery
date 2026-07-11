@@ -7,6 +7,7 @@ const detail = document.querySelector("#detail");
 const closeDetail = document.querySelector("#closeDetail");
 const detailMedia = document.querySelector(".detail-media");
 const zoomImage = document.querySelector("#zoomImage");
+const introOverlay = document.querySelector("#introOverlay");
 
 const cards = [];
 const radius = 880;
@@ -171,6 +172,36 @@ function closeProject() {
   });
 }
 
+function showIntroAnimation() {
+  if (!introOverlay) return;
+
+  gsap.to(state, {
+    targetYaw: state.targetYaw + Math.PI * 4,
+    duration: 1,
+    ease: "power1.inOut"
+  });
+
+  const introTimeline = gsap.timeline({
+    defaults: { ease: "power2.out" },
+    onComplete: () => {
+      introOverlay.style.display = "none";
+    }
+  });
+
+  introTimeline.to(introOverlay, { opacity: 0, duration: 0.4 }, 1);
+  introTimeline.from(
+    ".brandbar > *",
+    {
+      y: -12,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.06,
+      ease: "power3.out"
+    },
+    1.05
+  );
+}
+
 function setupDrag() {
   window.addEventListener("pointerdown", (event) => {
     if (detail.classList.contains("is-open")) return;
@@ -326,14 +357,16 @@ async function initGallery() {
     setupDrag();
     setupThree();
 
-    // Run your opening animation
-    gsap.from(".brandbar > *", {
-      y: -12,
-      opacity: 0,
-      duration: 0.9,
-      stagger: 0.06,
-      ease: "power3.out"
-    });
+    // // Run your opening animation
+    // gsap.from(".brandbar > *", {
+    //   y: -12,
+    //   opacity: 0,
+    //   duration: 0.9,
+    //   stagger: 0.06,
+    //   ease: "power3.out"
+    // });
+    showIntroAnimation();
+
     
   } catch (error) {
     console.error("Error loading gallery data:", error);
@@ -342,11 +375,3 @@ async function initGallery() {
 
 // Start everything
 initGallery();
-
-gsap.from(".brandbar > *", {
-  y: -12,
-  opacity: 0,
-  duration: 0.9,
-  stagger: 0.06,
-  ease: "power3.out"
-});
