@@ -4,6 +4,10 @@
     "image": "images/1.webp"
   },
   {
+    "title": "11",
+    "image": "images/11.webp"
+  },
+  {
     "title": "2",
     "image": "images/2.webp"
   },
@@ -144,12 +148,64 @@
     "image": "images/banaras-8.webp"
   },
   {
+    "title": "DEN08199",
+    "image": "images/DEN08199.webp"
+  },
+  {
     "title": "DEN08240",
     "image": "images/DEN08240.webp"
   },
   {
     "title": "DEN08314",
     "image": "images/DEN08314.webp"
+  },
+  {
+    "title": "DSC00205",
+    "image": "images/DSC00205.webp"
+  },
+  {
+    "title": "DSC00213",
+    "image": "images/DSC00213.webp"
+  },
+  {
+    "title": "DSC00264",
+    "image": "images/DSC00264.webp"
+  },
+  {
+    "title": "DSC00298",
+    "image": "images/DSC00298.webp"
+  },
+  {
+    "title": "DSC00335",
+    "image": "images/DSC00335.webp"
+  },
+  {
+    "title": "DSC00345",
+    "image": "images/DSC00345.webp"
+  },
+  {
+    "title": "DSC00367",
+    "image": "images/DSC00367.webp"
+  },
+  {
+    "title": "DSC00380",
+    "image": "images/DSC00380.webp"
+  },
+  {
+    "title": "DSC00397",
+    "image": "images/DSC00397.webp"
+  },
+  {
+    "title": "DSC00399",
+    "image": "images/DSC00399.webp"
+  },
+  {
+    "title": "DSC00401",
+    "image": "images/DSC00401.webp"
+  },
+  {
+    "title": "DSC00403",
+    "image": "images/DSC00403.webp"
   },
   {
     "title": "DSC02886",
@@ -208,6 +264,38 @@
     "image": "images/DSC07856.webp"
   },
   {
+    "title": "DSC09831",
+    "image": "images/DSC09831.webp"
+  },
+  {
+    "title": "DSC09832",
+    "image": "images/DSC09832.webp"
+  },
+  {
+    "title": "DSC09835",
+    "image": "images/DSC09835.webp"
+  },
+  {
+    "title": "DSC09836",
+    "image": "images/DSC09836.webp"
+  },
+  {
+    "title": "DSC09852",
+    "image": "images/DSC09852.webp"
+  },
+  {
+    "title": "DSC09881",
+    "image": "images/DSC09881.webp"
+  },
+  {
+    "title": "DSC09882",
+    "image": "images/DSC09882.webp"
+  },
+  {
+    "title": "DSC09893",
+    "image": "images/DSC09893.webp"
+  },
+  {
     "title": "Firefly (2)",
     "image": "images/Firefly (2).webp"
   },
@@ -240,6 +328,14 @@
     "image": "images/Gemini_Generated_Image_rd78clrd78clrd78.webp"
   },
   {
+    "title": "GOPR0697",
+    "image": "images/GOPR0697.webp"
+  },
+  {
+    "title": "GOPR0735",
+    "image": "images/GOPR0735.webp"
+  },
+  {
     "title": "Humanexe",
     "image": "images/Humanexe.webp"
   },
@@ -250,6 +346,142 @@
   {
     "title": "IMG20251216141616",
     "image": "images/IMG20251216141616.webp"
+  },
+  {
+    "title": "IMG 0064",
+    "image": "images/IMG_0064.webp"
+  },
+  {
+    "title": "IMG 0066",
+    "image": "images/IMG_0066.webp"
+  },
+  {
+    "title": "IMG 0074",
+    "image": "images/IMG_0074.webp"
+  },
+  {
+    "title": "IMG 0084",
+    "image": "images/IMG_0084.webp"
+  },
+  {
+    "title": "IMG 0105",
+    "image": "images/IMG_0105.webp"
+  },
+  {
+    "title": "IMG 0109",
+    "image": "images/IMG_0109.webp"
+  },
+  {
+    "title": "IMG 0110 2",
+    "image": "images/IMG_0110-2.webp"
+  },
+  {
+    "title": "IMG 0110",
+    "image": "images/IMG_0110.webp"
+  },
+  {
+    "title": "IMG 0118",
+    "image": "images/IMG_0118.webp"
+  },
+  {
+    "title": "IMG 0119",
+    "image": "images/IMG_0119.webp"
+  },
+  {
+    "title": "IMG 0127",
+    "image": "images/IMG_0127.webp"
+  },
+  {
+    "title": "IMG 0129",
+    "image": "images/IMG_0129.webp"
+  },
+  {
+    "title": "IMG 0152",
+    "image": "images/IMG_0152.webp"
+  },
+  {
+    "title": "IMG 0157",
+    "image": "images/IMG_0157.webp"
+  },
+  {
+    "title": "IMG 0165",
+    "image": "images/IMG_0165.webp"
+  },
+  {
+    "title": "IMG 0226",
+    "image": "images/IMG_0226.webp"
+  },
+  {
+    "title": "IMG 0277",
+    "image": "images/IMG_0277.webp"
+  },
+  {
+    "title": "IMG 0302",
+    "image": "images/IMG_0302.webp"
+  },
+  {
+    "title": "IMG 0331",
+    "image": "images/IMG_0331.webp"
+  },
+  {
+    "title": "IMG 0338",
+    "image": "images/IMG_0338.webp"
+  },
+  {
+    "title": "IMG 0341",
+    "image": "images/IMG_0341.webp"
+  },
+  {
+    "title": "IMG 0355",
+    "image": "images/IMG_0355.webp"
+  },
+  {
+    "title": "IMG 0361",
+    "image": "images/IMG_0361.webp"
+  },
+  {
+    "title": "IMG 0408",
+    "image": "images/IMG_0408.webp"
+  },
+  {
+    "title": "IMG 0451",
+    "image": "images/IMG_0451.webp"
+  },
+  {
+    "title": "IMG 0462",
+    "image": "images/IMG_0462.webp"
+  },
+  {
+    "title": "IMG 0485",
+    "image": "images/IMG_0485.webp"
+  },
+  {
+    "title": "IMG 0496",
+    "image": "images/IMG_0496.webp"
+  },
+  {
+    "title": "IMG 0497",
+    "image": "images/IMG_0497.webp"
+  },
+  {
+    "title": "IMG 0501",
+    "image": "images/IMG_0501.webp"
+  },
+  {
+    "title": "IMG 0508",
+    "image": "images/IMG_0508.webp"
+  },
+  {
+    "title": "IMG 0513",
+    "image": "images/IMG_0513.webp"
+  },
+  {
+    "title": "IMG 0518",
+    "image": "images/IMG_0518.webp"
+  },
+  {
+    "title": "IMG 0543",
+    "image": "images/IMG_0543.webp"
   },
   {
     "title": "IMG 0819",
@@ -300,12 +532,80 @@
     "image": "images/IMG_1391.webp"
   },
   {
+    "title": "IMG 2492",
+    "image": "images/IMG_2492.webp"
+  },
+  {
+    "title": "IMG 2525",
+    "image": "images/IMG_2525.webp"
+  },
+  {
+    "title": "IMG 2561",
+    "image": "images/IMG_2561.webp"
+  },
+  {
+    "title": "IMG 2636",
+    "image": "images/IMG_2636.webp"
+  },
+  {
     "title": "IMG 6924 Edit",
     "image": "images/IMG_6924_edit.webp"
   },
   {
+    "title": "IMG 8251",
+    "image": "images/IMG_8251.webp"
+  },
+  {
+    "title": "IMG 8273",
+    "image": "images/IMG_8273.webp"
+  },
+  {
+    "title": "IMG 8286",
+    "image": "images/IMG_8286.webp"
+  },
+  {
+    "title": "IMG 8326",
+    "image": "images/IMG_8326.webp"
+  },
+  {
+    "title": "IMG 8372",
+    "image": "images/IMG_8372.webp"
+  },
+  {
+    "title": "IMG 8374",
+    "image": "images/IMG_8374.webp"
+  },
+  {
     "title": "IMG 8393",
     "image": "images/IMG_8393.webp"
+  },
+  {
+    "title": "IMG 8396",
+    "image": "images/IMG_8396.webp"
+  },
+  {
+    "title": "IMG 8441",
+    "image": "images/IMG_8441.webp"
+  },
+  {
+    "title": "IMG 8444",
+    "image": "images/IMG_8444.webp"
+  },
+  {
+    "title": "IMG 8466",
+    "image": "images/IMG_8466.webp"
+  },
+  {
+    "title": "IMG 8483",
+    "image": "images/IMG_8483.webp"
+  },
+  {
+    "title": "IMG 8506",
+    "image": "images/IMG_8506.webp"
+  },
+  {
+    "title": "IMG 8837",
+    "image": "images/IMG_8837.webp"
   },
   {
     "title": "IMG 9297",
