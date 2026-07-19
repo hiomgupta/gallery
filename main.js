@@ -207,6 +207,16 @@ function revealGallery() {
   galleryRevealed = true;
   if (loading) loading.textContent = "Loading... 100%";
 
+  const finishReveal = () => {
+    if (cache) {
+      cache.style.display = "none";
+    }
+    if (loading) {
+      loading.style.display = "none";
+    }
+    gsap.set(".copy, .hint, .fullscreen-btn", { clearProps: "transform,opacity" });
+  };
+
   gsap.to(state, {
     targetYaw: state.targetYaw + Math.PI * 4,
     duration: 1,
@@ -218,15 +228,9 @@ function revealGallery() {
     duration: 0.45,
     delay: 0.35,
     ease: "power2.out",
-    onComplete: () => {
-      if (cache) {
-        cache.style.display = "none";
-      }
-      if (loading) {
-        loading.style.display = "none";
-      }
-    }
+    onComplete: finishReveal
   });
+  window.setTimeout(finishReveal, 1400);
 
   gsap.fromTo(
     ".copy, .hint, .fullscreen-btn",
