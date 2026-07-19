@@ -7,10 +7,16 @@ const detail = document.querySelector("#detail");
 const closeDetail = document.querySelector("#closeDetail");
 const detailMedia = document.querySelector(".detail-media");
 const zoomImage = document.querySelector("#zoomImage");
-const introOverlay = document.querySelector("#introOverlay");
+const cache = document.querySelector("#cache");
+const loading = document.querySelector("#loading");
+const fullscreenBtn = document.querySelector("#fullscreenBtn");
 
 const cards = [];
 const radius = 880;
+let expectedImages = 0;
+let settledImages = 0;
+let galleryRevealed = false;
+let sceneReady = false;
 const state = {
   yaw: -0.22,
   pitch: -0.05,
@@ -31,6 +37,8 @@ function buildCards() {
   const rows = 7;
   const latitudeMin = -0.78;
   const latitudeMax = 0.78;
+
+  expectedImages = columns * rows;
 
   for (let row = 0; row < rows; row++) {
     const rowRatio = row / (rows - 1);
@@ -58,11 +66,33 @@ function createCard(project, theta, phi) {
       <span class="card-image"><img alt="" src="${project.image}" loading="eager"></span>
     </span>
   `;
+  const image = button.querySelector("img");
+  const markSettled = () => {
+    settledImages += 1;
+    updateLoading();
+  };
+
+  if (image.complete) {
+    markSettled();
+  } else {
+    image.addEventListener("load", markSettled, { once: true });
+    image.addEventListener("error", markSettled, { once: true });
+  }
+
   button.addEventListener("click", () => {
     if (!state.dragMoved) openProject(project, button);
   });
   gallery.appendChild(button);
   cards.push({ element: button, project, theta, phi });
+}
+
+function updateLoading() {
+  if (!loading || !expectedImages) return;
+
+  const progress = Math.min(100, Math.round((settledImages / expectedImages) * 100));
+  loading.textContent = `Loading... ${progress}%`;
+
+  if (sceneReady && settledImages >= expectedImages) revealGallery();
 }
 
 function projectPoint(theta, phi) {
@@ -172,8 +202,10 @@ function closeProject() {
   });
 }
 
-function showIntroAnimation() {
-  if (!introOverlay) return;
+function revealGallery() {
+  if (galleryRevealed) return;
+  galleryRevealed = true;
+  if (loading) loading.textContent = "Loading... 100%";
 
   gsap.to(state, {
     targetYaw: state.targetYaw + Math.PI * 4,
@@ -181,30 +213,43 @@ function showIntroAnimation() {
     ease: "power1.inOut"
   });
 
-  const introTimeline = gsap.timeline({
-    defaults: { ease: "power2.out" },
+  gsap.to([cache, loading].filter(Boolean), {
+    opacity: 0,
+    duration: 0.45,
+    delay: 0.35,
+    ease: "power2.out",
     onComplete: () => {
-      introOverlay.style.display = "none";
+      if (cache) {
+        cache.style.display = "none";
+      }
+      if (loading) {
+        loading.style.display = "none";
+      }
     }
   });
 
-  introTimeline.to(introOverlay, { opacity: 0, duration: 0.4 }, 1);
-  introTimeline.from(
-    ".brandbar > *",
+  gsap.fromTo(
+    ".copy, .hint, .fullscreen-btn",
     {
       y: -12,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.06,
-      ease: "power3.out"
+      opacity: 0
     },
-    1.05
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      delay: 0.4,
+      stagger: 0.06,
+      ease: "power3.out",
+      clearProps: "transform,opacity"
+    }
   );
 }
 
 function setupDrag() {
   window.addEventListener("pointerdown", (event) => {
     if (detail.classList.contains("is-open")) return;
+    if (event.target.closest(".fullscreen-btn, .detail-close, .hint")) return;
     state.dragging = true;
     state.dragMoved = false;
     state.startX = event.clientX;
@@ -250,6 +295,22 @@ function setupDrag() {
     },
     { passive: true }
   );
+}
+
+function setupFullscreen() {
+  if (!fullscreenBtn) return;
+
+  fullscreenBtn.addEventListener("click", async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      } else {
+        await document.exitFullscreen();
+      }
+    } catch (error) {
+      console.error("Fullscreen request failed:", error);
+    }
+  });
 }
 
 function setupThree() {
@@ -355,21 +416,16 @@ async function initGallery() {
     // Now that we have the data, build the 3D world!
     buildCards();
     setupDrag();
+    setupFullscreen();
     setupThree();
-
-    // // Run your opening animation
-    // gsap.from(".brandbar > *", {
-    //   y: -12,
-    //   opacity: 0,
-    //   duration: 0.9,
-    //   stagger: 0.06,
-    //   ease: "power3.out"
-    // });
-    showIntroAnimation();
+    sceneReady = true;
+    updateLoading();
+    window.setTimeout(revealGallery, 2500);
 
     
   } catch (error) {
     console.error("Error loading gallery data:", error);
+    if (loading) loading.textContent = "Loading failed";
   }
 }
 

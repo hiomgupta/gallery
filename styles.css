@@ -1,11 +1,16 @@
 :root {
   color-scheme: dark;
-  --ink: #f7f4ea;
-  --muted: rgba(247, 244, 234, 0.58);
+  --ink: #fff;
+  --muted: rgba(255, 255, 255, 0.68);
+  --panel: rgba(0, 0, 0, 0.78);
 }
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html,
@@ -14,9 +19,10 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background: #020202;
+  background: #000;
   color: var(--ink);
-  font-family: "Arial Narrow", "Roboto Condensed", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+  touch-action: none;
 }
 
 body {
@@ -35,60 +41,113 @@ a {
 
 #sphere {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: block;
+  outline: none;
+  touch-action: none;
 }
 
 .experience {
   position: fixed;
   inset: 0;
   overflow: hidden;
-  user-select: none;
 }
 
-.brandbar {
+.cache {
   position: fixed;
-  z-index: 15;
-  top: 24px;
-  left: 24px;
-  right: 24px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 18px;
+  inset: 0;
+  z-index: 999;
+  background: #000;
   pointer-events: none;
 }
 
-.brand,
-.site-link {
+.loading {
+  position: fixed;
+  z-index: 1000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-family: "Courier New", monospace;
+  font-size: 20px;
+  background: var(--panel);
+  padding: 20px 40px;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.fullscreen-btn {
+  position: fixed;
+  z-index: 1000;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--panel);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: transform 0.2s ease;
+}
+
+.fullscreen-btn:hover {
+  transform: scale(1.1);
+}
+
+.fullscreen-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.hint {
+  position: fixed;
+  z-index: 10;
+  left: 12px;
+  bottom: 12px;
+  max-width: calc(100vw - 84px);
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--panel);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.3;
+  opacity: 0.86;
+  pointer-events: none;
+}
+
+.hint a {
+  color: tomato;
   text-decoration: none;
   pointer-events: auto;
 }
 
-.brand {
-  font-family: Arial, sans-serif;
-  font-size: clamp(30px, 4vw, 56px);
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 0.85;
-}
-
-.site-link {
+.copy {
+  position: fixed;
+  z-index: 100;
+  top: 20px;
+  left: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
   font-family: "Courier New", monospace;
-  font-size: 10px;
-  line-height: 1.1;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.site-link {
-  color: var(--muted);
-}
-
-.site-link:hover {
-  color: var(--ink);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 700;
+  pointer-events: none;
 }
 
 .gallery {
@@ -150,45 +209,6 @@ a {
   transform: scale(1.01);
 }
 
-.intro-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: grid;
-  place-items: center;
-  background: rgba(0, 0, 0, 0.78);
-  color: var(--ink);
-  font-family: "Courier New", monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.28em;
-  font-size: clamp(16px, 2.5vw, 24px);
-  pointer-events: auto;
-  opacity: 1;
-}
-
-.intro-overlay span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: clamp(14px, 2.2vw, 20px) clamp(24px, 3vw, 30px);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(247, 244, 234, 0.16);
-  border-radius: 999px;
-  backdrop-filter: blur(10px);
-  animation: intro-pulse 1.2s ease-in-out infinite alternate;
-}
-
-@keyframes intro-pulse {
-  from {
-    transform: scale(1);
-    opacity: 0.92;
-  }
-  to {
-    transform: scale(1.04);
-    opacity: 1;
-  }
-}
-
 .detail {
   position: fixed;
   z-index: 40;
@@ -244,8 +264,8 @@ a {
   place-items: center;
   border: 0;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  color: #050505;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
   cursor: pointer;
 }
 
@@ -258,15 +278,18 @@ a {
 }
 
 @media (max-width: 800px) {
-  .brandbar {
-    top: 16px;
-    left: 16px;
-    right: 16px;
+  .loading {
+    width: max-content;
+    max-width: calc(100vw - 40px);
+    padding: 16px 28px;
+    font-size: 16px;
   }
 
-  .site-link {
-    max-width: 124px;
-    text-align: right;
+  .hint {
+    bottom: 70px;
+    max-width: calc(100vw - 24px);
+    font-size: 11px;
+    text-align: center;
   }
 
   .card {
